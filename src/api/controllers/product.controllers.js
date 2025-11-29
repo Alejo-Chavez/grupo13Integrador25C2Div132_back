@@ -1,4 +1,4 @@
-import { selectAllProducts, selectProductById } from "../models/products.model.js";
+import { createProduct, insertProduct, selectAllProducts, selectProductById } from "../models/products.model.js";
 
 
 export const getAllProducts = async(req, res) => {
@@ -41,7 +41,40 @@ export const getProductsById = async(req, res)=>{
 
     } catch (error) {
         console.error("ERROR INTERNO --AL INTENTAR OBTENER PRODUCTO POR ID",error);
-        res.status
+        res.status(500).json({
+            message : "error al intentar obten-er los productos en la bd por id"
+        })
     }
+    
+}
 
+export const postProduct = async(req, res)=>{
+    try {
+        const {nombre,precio,categoria,img} = req.body;
+        console.log(req.body);
+        let [rows] = await insertProduct(nombre, precio, categoria, img);
+
+        res.status(201).json({
+            message: "Producto creado con exito"
+        });
+
+    } catch (error) {
+        console.error("ERROR INTERNO AL INTENTAR CREAR UN NUEVO PRODUCTO");
+        res.status(500).json({
+            message : "Error interno del servidor",
+            error : error.message
+        })
+    }
+}
+
+export const deleteProduct = async (req, res) =>{
+    try {
+        
+    } catch (error) {
+        console.error(`Error interno al intentar eliminar un producto con id ${id}`, error);
+        res.status(500).json({
+            message : "Error interno del servidor",
+            error : error.message
+        })
+    }
 }
