@@ -54,6 +54,13 @@ export const postProduct = async(req, res)=>{
     try {
         const {nombre,precio,categoria,img} = req.body;
         console.log(req.body);
+        if(!nombre || !precio || !categoria || !precio){
+            //Para que el endpoint termine acá y no ejecute lo q sigue
+            return res.status(400).json({
+                message: "Datos invalidos, asegurarse enviar todos los campos del formulario"
+            });
+        }
+
         let [rows] = await insertProduct(nombre, precio, categoria, img);
 
         res.status(201).json({

@@ -29,8 +29,7 @@ export const updateProduct = (nombre, img, precio, categoria, activo, id) =>{
     const sql = "UPDATE productos SET nombre = ?, img = ?, precio = ?, categoria = ?, activo = ? WHERE id = ?";
     const params = [nombre, img, precio, categoria, activo, id];
     
-    console.log("🔍 EJECUTANDO SQL:", sql);
-    console.log("🔍 PARÁMETROS:", params);
+    console.log("🔍 PARÁMETROS:", params); //BORRAR era para testear pq no funcionaba bien
     
     return connection.query(sql, params);
 }
