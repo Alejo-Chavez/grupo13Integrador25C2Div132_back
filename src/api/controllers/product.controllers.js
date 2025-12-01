@@ -81,6 +81,12 @@ export const deleteProduct = async (req, res) =>{
         let {id} = req.params;
         const [result] = await deleteProductById(id)
 
+        if(result.affectedRows === 0){
+            return res.json({
+                message: `No se encontró porducto con el id:  ${id}`
+            });
+        }
+
         res.status(200).json({
             message: `Producto con id: ${id} eliminado correctamente`
         });
@@ -97,8 +103,20 @@ export const deleteProduct = async (req, res) =>{
 export const modifyProduct = async (req, res) =>{
     try {
         let {id, nombre, img, precio, categoria, activo} = req.body;
+
+        if(!id || !nombre || !categoria ||!precio || !activo){ //Logica para ver que se pasen los campos necesarios
+            return res.status(400).json({
+                message: "Faltan campos requeridos"
+            });
+        }
         let [result] = await updateProduct(nombre, img, precio, categoria, activo, id); 
         console.log(result);
+
+        if(result.affectedRows === 0){ //Logica para validar que se haya actualizado
+            return res.status(400).json({
+                message: "No se actualizó el producto"
+            });
+        }
          
         res.status(200).json({
             message: "Producto actualizado correctamente"
