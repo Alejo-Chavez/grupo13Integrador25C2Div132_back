@@ -5,7 +5,7 @@ import { loggerURL} from "./src/api/middlewares/middlewares.js";
 const app = express();
 
 import environments from "./src/api/config/environments.js";
-import { productRoutes } from "./src/api/routes/index.js";
+import { productRoutes, viewRoutes } from "./src/api/routes/index.js";
 import { join, __dirname } from "./src/api/utils/index.js";
 
 
@@ -24,19 +24,8 @@ app.use("/api/productos", productRoutes);
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "src/views")); 
 
-app.get("/dashboard", async(req, res) => {
-    try {
-        const [rows] = await connection.query("SELECT * FROM productos");
-        res.render("index",{
-        title:"Dashboard",
-        about:"Productos",
-        productos: rows
-    });
-    } catch (error) {
-        console.error(error)
-    }
-    
-});
+
+app.use("/",viewRoutes);
 
 
 //ESCUCHAR EL PUERTO

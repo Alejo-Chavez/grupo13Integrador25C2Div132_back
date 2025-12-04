@@ -1,0 +1,28 @@
+
+<body>
+    <div id="products-container" class="form-container">
+        <h3>Alta productos</h3>
+        <!-- Formulario para crear productos y enviarlos a /api/products -->
+        <form id="altaProducts-container" class="form-alta">
+    
+            <label for="nameProd">Nombre</label>
+            <input type="text" name="nombre" id="nameProd" required>
+    
+            <label for="imageProd">Imagen</label>
+            <input type="text" name="img" id="imageProd" required>
+    
+            <label for="priceProd">Precio</label>
+            <input type="number" name="precio" id="priceProd" required>
+    
+            <label for="categoryProd">Categoria</label>
+            <select name="categoria" id="categoryProd" required>
+                <option value="suplemento">Suplemento</option>
+                <option value="ropa_deportiva">Ropa deportiva</option>
+            </select>
+    
+            <input type="submit" value="Crear producto">
+        </form>
+    </div>
+</body>
+
+<script src="js/crear.js"></script>
