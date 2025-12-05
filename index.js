@@ -19,13 +19,14 @@ app.use(express.static("/src/public"));
 
 app.use("/api/productos", productRoutes);
 app.use("/api/tickets", ticketRoutes);
+app.use("/",viewRoutes);
 
 //Configurar EJS como motor de plantillas 
 app.set("view engine", "ejs");
 app.set("views", join(__dirname, "src/views")); 
 
 
-app.use("/",viewRoutes);
+
 
 
 //ESCUCHAR EL PUERTO
