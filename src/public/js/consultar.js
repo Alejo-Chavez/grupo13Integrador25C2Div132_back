@@ -1,4 +1,3 @@
-
 let productList = document.getElementById("products-list");
 let getProductForm = document.getElementById("getProduct-form");
 let url = "http://localhost:3000";
@@ -11,9 +10,9 @@ getProductForm.addEventListener("submit", async (event) => {
     let idProd = data.idProd; //Ahora q mi form es objeto puedo guardar el id en una variable
     console.log(idProd);
 
-    console.log(`Haciendo una peticion GET a la url ${url}/productos/${idProd}`);
+    console.log(`Haciendo una peticion GET a la url ${url}/api/productos/${idProd}`);
 
-    let response = await fetch(`${url}/productos/${idProd}/`);
+    let response = await fetch(`${url}/api/productos/${idProd}/`);
     let datos = await response.json();
 
     if (response.ok) {

@@ -1,4 +1,4 @@
-import { deleteProductById, insertProduct, selectAllProducts, selectProductById, updateProduct } from "../models/products.model.js";
+import { selectAllProducts } from "../models/products.model.js";
 
 export const productsView = async (req, res) => {
     try {
@@ -23,7 +23,6 @@ export const productById = (req, res) => {
 // Vista para crear productos
 export const createProduct = async (req, res) => {
     try {
-        await insertProduct(); 
         res.render("crear",{
             title: "Crear",
             about: "Crear producto"

@@ -11,9 +11,9 @@ getProductForm.addEventListener("submit", async (event) => {
     let idProd = data.idProd; //Ahora q mi form es objeto puedo guardar el id en una variable
     console.log(idProd);
 
-    console.log(`Haciendo una peticion GET a la url ${url}/productos/${idProd}`);
+    console.log(`Haciendo una peticion GET a la url ${url}/api/productos/${idProd}`);
 
-    let response = await fetch(`${url}/productos/${idProd}`);
+    let response = await fetch(`${url}/api/productos/${idProd}`);
     let datos = await response.json();
 
     //Para extraer la respuesta payload
@@ -21,7 +21,7 @@ getProductForm.addEventListener("submit", async (event) => {
 
     let htmlProduct = `
                 <li class="li-product">
-                    <img class="product-img" src ${product.img}>
+                    <img class="product-img" src ="${product.img}">
                     <p>Id : ${product.id} | Nombre: ${product.nombre}</p>
                 </li>
                 <li class="li-boxButton">
@@ -29,6 +29,7 @@ getProductForm.addEventListener("submit", async (event) => {
                 </li>
             `;
     productList.innerHTML = htmlProduct;
+    console.log("=== DEBUG PRODUCTO ===");
 
     let deleteProduct_button = document.getElementById("deleteProduct-button");
 
@@ -49,7 +50,7 @@ async function deleteProduct(id) {
     console.log(id) //Para confirmar que se recibio el id correctamente
 
     try {
-        let response = await fetch(`${url}/productos/${id}`, {
+        let response = await fetch(`${url}/api/productos/${id}`, {
             method: "PUT"
         });
 

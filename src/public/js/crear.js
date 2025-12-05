@@ -14,7 +14,7 @@ altaProducts_container.addEventListener("submit", async (event) => {
     let data = Object.fromEntries(formData.entries());
 
     try {
-        let response = await fetch(`${url}/productos`, {
+        let response = await fetch(`${url}/api/productos`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

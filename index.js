@@ -1,11 +1,10 @@
 import express from "express";
-import connection from "./src/api/database/db.js";
 import cors from "cors";
 import { loggerURL} from "./src/api/middlewares/middlewares.js";
 const app = express();
 
 import environments from "./src/api/config/environments.js";
-import { productRoutes, viewRoutes } from "./src/api/routes/index.js";
+import { productRoutes, viewRoutes, ticketRoutes } from "./src/api/routes/index.js";
 import { join, __dirname } from "./src/api/utils/index.js";
 
 
@@ -19,6 +18,7 @@ app.use(express.static(join(__dirname, "src/public"))); //Sirve archivos estatic
 app.use(express.static("/src/public"));
 
 app.use("/api/productos", productRoutes);
+app.use("/api/tickets", ticketRoutes);
 
 //Configurar EJS como motor de plantillas 
 app.set("view engine", "ejs");

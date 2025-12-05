@@ -1,7 +1,9 @@
+<%-include("partials/head.ejs")%>
+<%-include("partials/nav.ejs")%>
 
 <body>
     <div id="products-container" class="form-container">
-        <h3>Alta productos</h3>
+        <h3><%= about %></h3>
         <!-- Formulario para crear productos y enviarlos a /api/products -->
         <form id="altaProducts-container" class="form-alta">
     
@@ -26,3 +28,4 @@
 </body>
 
 <script src="js/crear.js"></script>
+<%-include("partials/footer.ejs")%>

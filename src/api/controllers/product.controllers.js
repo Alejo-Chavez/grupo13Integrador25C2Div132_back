@@ -1,4 +1,3 @@
-import { json } from "express";
 import { deleteProductById, insertProduct, selectAllProducts, selectProductById, updateProduct } from "../models/products.model.js";
 
 

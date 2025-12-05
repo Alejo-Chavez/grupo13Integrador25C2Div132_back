@@ -5,7 +5,9 @@
     <section id="products-container">
         <% productos.forEach(prod => { %>
             <div class="product-card">
-                <img class="product-img" src="<%=prod.img%>" alt="<%=prod.nombre%>">
+                <img class="product-img" 
+                     src="<%= (prod.img && (prod.img.startsWith('http') || prod.img.includes('.'))) ? prod.img : '/img/default.jpg' %>" 
+                     alt="<%=prod.nombre%>"> 
                 <h3><%=prod.nombre%></h3>
                 <p>ID: <%=prod.id%></p>
                 <p>$<%=prod.precio%></p>

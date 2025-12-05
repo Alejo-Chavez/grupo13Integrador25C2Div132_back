@@ -11,11 +11,8 @@
             let formData = new FormData(event.target);
             let data = Object.fromEntries(formData.entries());
             let idProd = data.idProd; //Ahora q mi form es objeto puedo guardar el id en una variable
-            console.log(idProd);
-
-            console.log(`Haciendo una peticion GET a la url ${url}/productos/${idProd}`);
-
-            let response = await fetch(`${url}/productos/${idProd}`);
+            
+            let response = await fetch(`${url}/api/productos/${idProd}`);
             let datos = await response.json();
             
 
@@ -66,7 +63,7 @@
  
             <input type="hidden" name="activo" id="activoProd" value="${product.activo}">   
 
-            <input type="submit" value="Crear producto">
+            <input type="submit" value="Modificar">
         </form>
         `;
         updateFormContainer.innerHTML = updateProductsFormHTML;
@@ -86,10 +83,9 @@
             
             let formData = new FormData(event.target);
             let data = Object.fromEntries(formData.entries());
-            console.log(data);
 
             try {
-                let response = await fetch(`${url}/productos`,{
+                let response = await fetch(`${url}/api/productos`,{
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json" 

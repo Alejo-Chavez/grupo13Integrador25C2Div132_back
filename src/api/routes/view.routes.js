@@ -5,7 +5,7 @@ import { productsView, productById, createProduct, modifyProduct, deleteProduct 
 const router = Router();
 
 router.get("/", productsView);
-router.get("/consultar",    );
+router.get("/consultar", productById);
 router.get("/crear", createProduct);
 router.get("/modificar", modifyProduct);
 router.get("/eliminar", deleteProduct);
